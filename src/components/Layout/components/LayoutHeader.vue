@@ -108,7 +108,7 @@ if (mainStore.isLogin) {
 
 <template>
 <n-layout-header bordered class="flex justify-between items-center px-4 h-14 sm:px-3">
-  <div>
+  <div class="flex">
     <span @click="backToDiscovery">奇妙音乐屋！</span>
     <layout-header-search/>
   </div>

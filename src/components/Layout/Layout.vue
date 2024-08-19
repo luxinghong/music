@@ -23,7 +23,7 @@ onMounted(() => {
   <div id="layout-container" style="width: 85vw; margin: auto">
     <n-layout>
       <base-header />
-<!--      <layout-left-menu />-->
+      <layout-left-menu />
 <!--      <n-layout-footer></n-layout-footer>-->
     </n-layout>
   </div>
