@@ -9,13 +9,18 @@ declare module 'vue' {
     LayoutHeaderSearch: typeof import('./src/components/Layout/components/LayoutHeaderSearch.vue')['default']
     LayoutLeftMenu: typeof import('./src/components/Layout/components/LayoutLeftMenu.vue')['default']
     LoadImg: typeof import('./src/components/Base/LoadImg.vue')['default']
+    LoadImg1: typeof import('./src/components/Base/LoadImg1.vue')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NButton: typeof import('naive-ui')['NButton']
+    NCard: typeof import('naive-ui')['NCard']
     NCarousel: typeof import('naive-ui')['NCarousel']
     NCarouselItem: typeof import('naive-ui')['NCarouselItem']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
+    NGrid: typeof import('naive-ui')['NGrid']
+    NGridItem: typeof import('naive-ui')['NGridItem']
     NIcon: typeof import('naive-ui')['NIcon']
+    NImage: typeof import('naive-ui')['NImage']
     NInput: typeof import('naive-ui')['NInput']
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
@@ -27,6 +32,8 @@ declare module 'vue' {
     NPopover: typeof import('naive-ui')['NPopover']
     NSkeleton: typeof import('naive-ui')['NSkeleton']
     NSwitch: typeof import('naive-ui')['NSwitch']
+    SongList: typeof import('./src/components/SongsList/SongList.vue')['default']
+    SongListSkeleton: typeof import('./src/components/SongsList/SongListSkeleton.vue')['default']
   }
 }
 

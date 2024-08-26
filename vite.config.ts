@@ -11,7 +11,9 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    Components({resolvers: [NaiveUiResolver()]})
+    Components({
+      resolvers: [NaiveUiResolver()]
+    })
   ],
   resolve: {
     alias: {
