@@ -22,11 +22,15 @@ const props = withDefaults(defineProps<Props>(),{
 })
 
 const imageClass = computed(() => {
-  let classes = `props.className `;
+  let classes = props.className + 'w-full warpImg transition-all h-full duration-500 ';
   if (props.hasHoverScale) {
-    classes += 'group-hover-scale';
+    classes += ' group-hover-scale';
   }
   return classes;
+})
+
+const imageWrapClass = computed(() => {
+  return props.className + ' group relative h-full';
 })
 
 const isLoading = ref(true)
@@ -36,7 +40,7 @@ const handleError = () => error.value=true
 </script>
 
 <template>
-  <div class="group">
+  <div :class="imageWrapClass" :style="{height:props.height,zIndex: isLoading?10:error?999:0}">
     <n-image
         :class="imageClass"
         :src="src"

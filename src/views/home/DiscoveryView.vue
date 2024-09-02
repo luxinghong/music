@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import {useAsyncState, useElementHover} from "@vueuse/core";
-import {getBanner, getPersonalized} from "@/service";
+import {getBanner, getNewSong, getPersonalized} from "@/service";
 import {ref} from "vue";
 
 const {state: banners, isLoading} = useAsyncState(getBanner().then(res => res.data.banners), []);
 const hoverRef = ref()
 const isHovered = useElementHover(hoverRef);
 const {state:SongsList,isLoading:SongsIsLoading} = useAsyncState(getPersonalized().then(res => res.data.result),[]);
+const {state: newSongList, isLoading: newSongListIsLoading} = useAsyncState(getNewSong().then(res => ))
 </script>
 
 <template>
@@ -40,6 +41,12 @@ const {state:SongsList,isLoading:SongsIsLoading} = useAsyncState(getPersonalized
     <p class="text-xl pb-4">推荐歌单</p>
     <song-list-skeleton v-if="SongsIsLoading"/>
     <SongList v-else :songs="SongsList"/>
+    <p class="text-xl pb-4">最新音乐</p>
+    <n-grid
+      v-if=""
+      cols="3">
+
+    </n-grid>
   </div>
 </template>
 

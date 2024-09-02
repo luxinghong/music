@@ -17,6 +17,7 @@ declare module 'vue' {
     NCarouselItem: typeof import('naive-ui')['NCarouselItem']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
+    NEllipsis: typeof import('naive-ui')['NEllipsis']
     NGrid: typeof import('naive-ui')['NGrid']
     NGridItem: typeof import('naive-ui')['NGridItem']
     NIcon: typeof import('naive-ui')['NIcon']
@@ -32,6 +33,7 @@ declare module 'vue' {
     NPopover: typeof import('naive-ui')['NPopover']
     NSkeleton: typeof import('naive-ui')['NSkeleton']
     NSwitch: typeof import('naive-ui')['NSwitch']
+    PlayIcon: typeof import('./src/components/Base/PlayIcon.vue')['default']
     SongList: typeof import('./src/components/SongsList/SongList.vue')['default']
     SongListSkeleton: typeof import('./src/components/SongsList/SongListSkeleton.vue')['default']
   }

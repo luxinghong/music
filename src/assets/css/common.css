@@ -1,0 +1,7 @@
+.card-mask {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-image: linear-gradient(0,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.6) 100%);
+}
