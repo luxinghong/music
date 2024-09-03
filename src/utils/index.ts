@@ -10,3 +10,7 @@ export function formatNumber(num: number) {
     }
     return num.toString();
 }
+
+export const formatSongsAuthor = (attr:any[]) => {
+    return attr.map((item:any) => item.name).join('/')
+}

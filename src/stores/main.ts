@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import state from "./state";
 import {darkTheme} from "naive-ui";
+import {formatSongsAuthor} from "@/utils";
 
 export const useMainStore = defineStore({
     id:'main',
@@ -58,5 +59,20 @@ export const useMainStore = defineStore({
             const theme = this.theme === 'dark' ? 'light' : 'dark';
             this.changeTheme(theme);
         },
+        mapSongListAddLike(data: any[]) {
+            return data.map((item,index) => {
+                if (this.likeSongs) {
+                    item.like = this.hasLikeSong(item.id)
+                }else {
+                    item.like = false
+                }
+                item.formatAuthor = formatSongsAuthor(data)
+                item.key = index
+                return item
+            })
+        },
+        hasLikeSong(id:number) {
+            return !!this.likeSongs[this.likeSongsIndexMap[id]]
+        }
     }
 })
