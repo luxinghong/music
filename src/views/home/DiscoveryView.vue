@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {useAsyncState, useElementHover} from "@vueuse/core";
-import {getBanner, getNewSong, getPersonalized} from "@/service";
+import {getBanner, getNewSong, getPersonalized, getRecommendMv} from "@/service";
 import {ref} from "vue";
 import {useMainStore} from "@/stores/main";
 import {mapSongs} from "@/utils/arr-map";
@@ -15,6 +15,7 @@ const {state: newSongList, isLoading: newSongListIsLoading} = useAsyncState(
     getNewSong().then(res => mainStore.mapSongListAddLike(mapSongs(res.data.result))),
     []
 )
+const {state: MVList, isLoading: MVIsLoading} = useAsyncState(getRecommendMv().then(res => res.data.result),[]);
 </script>
 
 <template>
@@ -102,6 +103,9 @@ const {state: newSongList, isLoading: newSongListIsLoading} = useAsyncState(
         </div>
       </n-grid-item>
     </n-grid>
+    <p class="text-xl py-4">最新MV</p>
+    <MvListSkeleton v-if="MVIsLoading" :count="2"/>
+    <MvList v-else :list="MVList"/>
   </div>
 </template>
 

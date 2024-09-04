@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<Props>(),{
 })
 
 const imageClass = computed(() => {
-  let classes = props.className + 'w-full warpImg transition-all h-full duration-500 ';
+  let classes = props.className + 'w-full wrapImg transition-all h-full duration-500 ';
   if (props.hasHoverScale) {
     classes += ' group-hover-scale';
   }
@@ -56,4 +56,8 @@ const handleError = () => error.value=true
 </template>
 
 <style scoped>
+:deep(.wrapImg > img) {
+  width: 100%;
+  height: 100%;
+}
 </style>
