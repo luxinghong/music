@@ -36,6 +36,7 @@ declare module 'vue' {
     NPopover: typeof import('naive-ui')['NPopover']
     NSkeleton: typeof import('naive-ui')['NSkeleton']
     NSwitch: typeof import('naive-ui')['NSwitch']
+    NTime: typeof import('naive-ui')['NTime']
     PlayIcon: typeof import('./src/components/Base/PlayIcon.vue')['default']
     SongList: typeof import('./src/components/SongsList/SongList.vue')['default']
     SongListSkeleton: typeof import('./src/components/SongsList/SongListSkeleton.vue')['default']

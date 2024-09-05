@@ -16,6 +16,7 @@ defineProps<{
       <n-grid-item
           v-for="item in list"
           :key="item.id"
+          class="group"
       >
         <mv-list-img-item :item="item"/>
         <div>

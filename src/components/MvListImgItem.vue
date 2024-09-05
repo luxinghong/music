@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {formatNumber} from "@/utils";
 import {Play} from "@vicons/carbon";
+import PlayIcon from "@/components/Base/PlayIcon.vue";
 
 withDefaults(defineProps<{
   item: any,
@@ -13,7 +14,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <div :style="{borderRadius}" class="relative flex-1">
+  <div :style="{borderRadius}" class="relative flex-1 overflow-hidden">
     <load-img
       :src="item.picUrl || item.cover"
       :height="height"
@@ -25,9 +26,20 @@ withDefaults(defineProps<{
       <n-icon :component="Play" />
       <span class="pl-1">{{ formatNumber(item.playCount) }}</span>
     </div>
+    <play-icon style="width: 40px; height: 40px" class="cursor-pointer position-center"/>
+    <p v-if="item.copywriter" class="tips">
+      {{ item.copywriter }}
+    </p>
+    <div :style="borderRadius" class="absolute bottom-0 w-full text-right bg-linear-mask">
+      <n-time class="mr-2 text-white" :time="item.duration" format="mm:ss"/>
+    </div>
   </div>
 </template>
 
 <style scoped>
-
+.tips {
+  @apply overflow-hidden absolute top-0 w-full h-0
+  group-hover:h-8 leading-8 text-center text-white
+  bg-black/50 transition-height
+}
 </style>
