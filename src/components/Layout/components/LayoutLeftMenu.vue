@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import {RouterLink} from "vue-router";
+import {RouterLink, useRoute} from "vue-router";
 import {NIcon} from 'naive-ui';
 import {SparklesOutline,List,VideocamOutline} from "@vicons/ionicons5";
 import {Music,User} from '@vicons/carbon';
@@ -37,7 +37,7 @@ const noLoginOption = {
   icon: () => <NIcon class="mr-2" size={20} component={User}/>
 }
 
-let activeKey = ref('');
+let activeKey = ref<string | null>('');
 let collapsed = ref(false);
 const myMenuOptions = ref(menuOptions);
 let hiddenLeftMenu = ref(false);
@@ -60,6 +60,12 @@ const changeMenuOptions = () => {
 if (!mainStore.isLogin) {
   changeMenuOptions();
 }
+
+const route = useRoute()
+watch(() => route.path, newVal => {
+  activeKey.value = newVal;
+  hiddenLeftMenu.value = !!route.meta.hidden;
+})
 
 </script>
 <template>

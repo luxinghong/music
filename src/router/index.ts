@@ -9,9 +9,15 @@ const router = createRouter({
       meta: {auth: false}
     },
     {
+      name: 'discovery',
       path: '/discovery',
-      name: '/discovery',
       component: () => import('@/views/home/DiscoveryView.vue'),
+      meta: {auth: false}
+    },
+    {
+      name: 'songs',
+      path: '/songList',
+      component: () => import('@/views/songList/RecommendSongListView.vue'),
       meta: {auth: false}
     }
   ]
