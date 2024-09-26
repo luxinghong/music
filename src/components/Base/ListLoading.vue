@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<ListLoadingProps>(), {
 });
 
 const loadingTarget = ref<HTMLElement | null>(null);
+let loadStatus: 'pending' | 'loading' | 'done' = 'pending';
 
 const observerCallback = (entries: IntersectionObserverEntry[]) => {
   if (props.noMore) {
@@ -21,7 +22,11 @@ const observerCallback = (entries: IntersectionObserverEntry[]) => {
   }
   let visible = entries[0].isIntersecting;
   if (visible) {
-    // props.loadMore(() => {});
+    if (loadStatus === 'loading') {
+      return;
+    }
+    loadStatus = 'loading';
+    props.loadMore(() => (loadStatus = 'done'));
   }
 };
 
@@ -37,14 +42,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="loadingTarget" v-if="!noMore" style="height: 68px">
+  <div
+    ref="loadingTarget"
+    v-if="!noMore"
+    class="my-4 flex items-center justify-center w-full"
+  >
     <n-spin :size="size" />
   </div>
   <n-divider v-else dashed> 我也是有底线的! </n-divider>
 </template>
 
-<style scoped>
-/*:deep(.n-base-loading .n-base-loading__container) {
-  animation: none;
-}*/
-</style>
+<style scoped></style>
