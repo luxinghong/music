@@ -79,7 +79,7 @@ const handleMouseLeave = (e: MouseEvent, value: string) => {
 </script>
 
 <template>
-  <div class="p-4 bg-slate-50 dark:bg-black">
+  <div class="sticky top-0 z-10 p-4 bg-slate-50 dark:bg-black">
     <span
       v-for="item in typeList"
       :key="item.value"
