@@ -57,7 +57,7 @@ const { data: songs, isPending } = useQuery({
   queryKey: ['getTopSong', activeType],
   queryFn: () => getTopSong(activeType.value),
   select: (res) => mainStore.mapSongListAddLike(mapSongs(res.data.data)),
-  staleTime: 10 * 1000,
+  staleTime: 3 * 60 * 1000,
 });
 
 const handleTypeClick = (value: string) => {

@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CategoryTab: typeof import('./src/components/Base/CategoryTab.vue')['default']
     Layout: typeof import('./src/components/Layout/Layout.vue')['default']
     LayoutHeader: typeof import('./src/components/Layout/components/LayoutHeader.vue')['default']
     LayoutHeaderSearch: typeof import('./src/components/Layout/components/LayoutHeaderSearch.vue')['default']
@@ -34,6 +35,7 @@ declare module 'vue' {
     NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
     NMenu: typeof import('naive-ui')['NMenu']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
+    NPagination: typeof import('naive-ui')['NPagination']
     NPopconfirm: typeof import('naive-ui')['NPopconfirm']
     NPopover: typeof import('naive-ui')['NPopover']
     NSkeleton: typeof import('naive-ui')['NSkeleton']

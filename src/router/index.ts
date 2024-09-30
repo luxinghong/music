@@ -26,6 +26,12 @@ const router = createRouter({
       component: () => import('@/views/music/LatestMusicView.vue'),
       meta: { auth: false },
     },
+    {
+      path: '/latestMv',
+      name: 'latestMv',
+      component: () => import('@/views/mv/LatestMvView.vue'),
+      meta: { auth: false },
+    },
   ],
 });
 
