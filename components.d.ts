@@ -16,6 +16,7 @@ declare module 'vue' {
     MvListImgItem: typeof import('./src/components/MvListImgItem.vue')['default']
     MvListSkeleton: typeof import('./src/components/MvListSkeleton.vue')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
+    NBackTop: typeof import('naive-ui')['NBackTop']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
     NCarousel: typeof import('naive-ui')['NCarousel']

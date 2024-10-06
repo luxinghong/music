@@ -2,8 +2,9 @@
 import CategoryTab from '@/components/Base/CategoryTab.vue';
 import MvList from '@/components/MvList.vue';
 import { useQuery } from '@tanstack/vue-query';
-import { ref, watch } from 'vue';
+import { nextTick, ref, watch, watchEffect } from 'vue';
 import { getMvList } from '@/service';
+import MvListSkeleton from '@/components/MvListSkeleton.vue';
 
 const categoryList = [
   {
@@ -19,7 +20,7 @@ const categoryList = [
   { type: 'order', name: '排序', list: ['最热', '最新', '上升最快'] },
 ];
 
-const params = ref({
+const params = ref<Record<string, string | undefined>>({
   area: categoryList.find((item) => item.type === 'area')?.list[0],
   type: categoryList.find((item) => item.type === 'type')?.list[0],
   order: categoryList.find((item) => item.type === 'order')?.list[0],
@@ -54,6 +55,23 @@ const { data: list, isPending } = useQuery({
   },
   staleTime: 3 * 60 * 1000,
 });
+
+watchEffect(async () => {
+  if (!isPending.value) {
+    await nextTick();
+    const backTopElement = document.querySelector('.n-back-top') as HTMLElement;
+    if (backTopElement) {
+      backTopElement.click();
+    }
+  }
+});
+
+const handleTagChanged = (type: string, tag: string) => {
+  if (page.value !== 1) {
+    page.value = 1;
+  }
+  params.value[type] = tag;
+};
 </script>
 
 <template>
@@ -63,9 +81,12 @@ const { data: list, isPending } = useQuery({
       :key="index"
       :name="item.name"
       :list="item.list"
+      :type="item.type"
+      @tag-changed="handleTagChanged"
     />
     <div class="py-6">
-      <mv-list :list="list" />
+      <mv-list-skeleton v-if="isPending" :count="pageSize" />
+      <mv-list v-else :list="list" />
       <div class="flex mt-4 justify-end">
         <n-pagination
           v-model:page="page"
@@ -76,6 +97,7 @@ const { data: list, isPending } = useQuery({
         />
       </div>
     </div>
+    <n-back-top />
   </div>
 </template>
 
